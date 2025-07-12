@@ -20,6 +20,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "~/components/ui/select";
+import type { z } from "zod";
+import { investigationSchema } from "~/lib/validations";
+
+type WizardData = z.infer<typeof investigationSchema>;
 
 export function Step1() {
   const { data, updateData, nextStep } = useWizard();
@@ -32,7 +36,7 @@ export function Step1() {
     },
   });
 
-  const onSubmit = (values: any) => {
+  const onSubmit = (values: Partial<WizardData>) => {
     updateData(values);
     nextStep();
   };

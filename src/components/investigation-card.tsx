@@ -2,8 +2,9 @@ import Link from "next/link";
 import { Card, CardContent, CardFooter, CardHeader } from "~/components/ui/card";
 import { Badge } from "~/components/ui/badge";
 import { formatDate } from "~/lib/utils";
+import type { Investigation } from "@prisma/client";
 
-export function InvestigationCard({ investigation }: { investigation: any }) {
+export function InvestigationCard({ investigation }: { investigation: Investigation }) {
   return (
     <Card className="overflow-hidden transition-shadow hover:shadow-lg">
       <div className="aspect-video bg-gray-200">

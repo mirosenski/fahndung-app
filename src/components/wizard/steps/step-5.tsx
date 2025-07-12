@@ -14,6 +14,10 @@ import {
   FormMessage,
 } from "~/components/ui/form";
 import { Input } from "~/components/ui/input";
+import type { z } from "zod";
+import { investigationSchema } from "~/lib/validations";
+
+type WizardData = z.infer<typeof investigationSchema>;
 
 export function Step5() {
   const { data, updateData, prevStep } = useWizard();
@@ -26,7 +30,7 @@ export function Step5() {
     },
   });
 
-  const onSubmit = (values: any) => {
+  const onSubmit = (values: Partial<WizardData>) => {
     updateData(values);
     // TODO: Submit to API
     console.log("Final data:", { ...data, ...values });

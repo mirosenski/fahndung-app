@@ -14,6 +14,10 @@ import {
   FormMessage,
 } from "~/components/ui/form";
 import { Textarea } from "~/components/ui/textarea";
+import type { z } from "zod";
+import { investigationSchema } from "~/lib/validations";
+
+type WizardData = z.infer<typeof investigationSchema>;
 
 export function Step4() {
   const { data, updateData, nextStep, prevStep } = useWizard();
@@ -26,7 +30,7 @@ export function Step4() {
     },
   });
 
-  const onSubmit = (values: any) => {
+  const onSubmit = (values: Partial<WizardData>) => {
     updateData(values);
     nextStep();
   };
