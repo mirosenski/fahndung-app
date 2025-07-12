@@ -1,5 +1,8 @@
 import { api } from "~/trpc/server";
 import { InvestigationCard } from "~/components/investigation-card";
+import type { RouterOutputs } from "~/trpc/react";
+
+type InvestigationList = RouterOutputs["investigation"]["getPublished"];
 
 export default async function HomePage() {
   const result = await api.investigation.getPublished({ limit: 12 });
@@ -10,7 +13,7 @@ export default async function HomePage() {
       <h1 className="mb-8 text-3xl font-bold">Aktuelle Fahndungen</h1>
       
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {items.map((item: any) => (
+        {items.map((item: InvestigationList["items"][0]) => (
           <InvestigationCard key={item.id} investigation={item} />
         ))}
       </div>
