@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState } from "react";
 import type { z } from "zod";
-import { investigationSchema } from "~/lib/validations";
+import type { investigationSchema } from "~/lib/validations";
 
 type WizardData = z.infer<typeof investigationSchema>;
 

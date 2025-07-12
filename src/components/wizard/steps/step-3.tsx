@@ -16,7 +16,7 @@ import {
 import { Input } from "~/components/ui/input";
 import { Textarea } from "~/components/ui/textarea";
 import type { z } from "zod";
-import { investigationSchema } from "~/lib/validations";
+import type { investigationSchema } from "~/lib/validations";
 
 type WizardData = z.infer<typeof investigationSchema>;
 
